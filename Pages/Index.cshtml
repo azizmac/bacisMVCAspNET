@@ -1,0 +1,58 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Главная";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="display-4">Добро пожаловать в систему авторизации</h1>
+            <p class="lead mt-4">Данная система разработана для демонстрации возможностей ASP.NET Core Identity с использованием PostgreSQL</p>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5>Возможности системы</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">✅ Регистрация новых пользователей</li>
+                        <li class="list-group-item">✅ Авторизация пользователей</li>
+                        <li class="list-group-item">✅ Безопасное хранение паролей</li>
+                        <li class="list-group-item">✅ Защита от SQL-инъекций</li>
+                        <li class="list-group-item">✅ Использование PostgreSQL</li>
+                        <li class="list-group-item">✅ Хранение сессий через Cookies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h5>Начало работы</h5>
+                </div>
+                <div class="card-body">
+                    <p>Для использования системы необходимо:</p>
+                    
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <div class="alert alert-success">
+                            <strong>Вы уже авторизованы!</strong> Теперь вы имеете доступ ко всем функциям системы.
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="d-grid gap-2">
+                            <a class="btn btn-success btn-lg" asp-area="Identity" asp-page="/Account/Register">Зарегистрироваться</a>
+                            <a class="btn btn-primary btn-lg" asp-area="Identity" asp-page="/Account/Login">Войти в систему</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
